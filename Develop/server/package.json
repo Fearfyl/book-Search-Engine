@@ -15,10 +15,15 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",
-    "brcypt": "^1.0.1",
     "express": "^4.19.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^8.0.0"
+    "mongoose": "^8.0.0",
+    "@apollo/server": "^4.0.0",
+    "graphql": "^16.6.0",
+    "graphql-tag" : "^2.12.5",
+    "apollo-server-errors": "^3.3.0"
+
+
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
