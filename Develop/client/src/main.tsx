@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ApolloProvider } from '@apollo/client';
-import client from './utils/apolloClient';
+import client from './utils/ApolloClient';
 
 import App from './App.jsx';
 import SearchBooks from './pages/SearchBooks';
