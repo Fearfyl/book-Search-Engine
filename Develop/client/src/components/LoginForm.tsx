@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations.ts';
 import Auth from '../utils/auth';
 import type { User } from '../models/User';
 
@@ -52,7 +52,7 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
           placeholder='Your email'
           name='email'
           onChange={handleInputChange}
-          value={userFormData.email}
+          value={userFormData.email || ''}
           required
         />
         <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
@@ -65,7 +65,7 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
           placeholder='Your password'
           name='password'
           onChange={handleInputChange}
-          value={userFormData.password}
+          value={userFormData.password || ''}
           required
         />
         <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
