@@ -12,9 +12,33 @@ interface Context {
     user?: UserContext;
 }
 
+interface BookData {
+    authors: string[];
+    description: string;
+    bookId: string;
+    image: string;
+    link: string;
+    title: string;
+}
+
+interface LoginArgs {
+    email: string;
+    password: string;
+}
+
+interface AddUserArgs {
+    username: string;
+    email: string;
+    password: string;
+}
+
+interface SaveBookArgs {
+    bookData: BookData;
+}
+
 const resolvers = {
     Query: {
-        me: async (_parent, _args, context: Context) => {
+        me: async (_parent: any, _args: any, context: Context) => {
             if (context.user) {
                 return User.findById(context.user._id);
             }
@@ -22,7 +46,7 @@ const resolvers = {
         },
     },
     Mutation: {
-        login: async (_parent, { email, password }) => {
+        login: async (_parent: any, { email, password }: LoginArgs) => {
             const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError("Can't find this user");
@@ -40,7 +64,7 @@ const resolvers = {
             });
             return { token, user };
         },
-        addUser: async (_parent, { username, email, password }) => {
+        addUser: async (_parent: any, { username, email, password }: AddUserArgs) => {
             const user = await User.create({ username, email, password });
             const token = signToken({
                 username: user.username,
@@ -49,7 +73,7 @@ const resolvers = {
             });
             return { token, user };
         },
-        saveBook: async (_parent, { bookData }, context: Context) => {
+        saveBook: async (_parent: any, { bookData }: SaveBookArgs, context: Context) => {
             if (!context.user) {
                 throw new AuthenticationError('You need to be logged in!');
             }
